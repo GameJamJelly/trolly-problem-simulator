@@ -26,6 +26,7 @@ jobs:
             ~/.cargo/.crates.toml
             ~/.cargo/.crates2.json
             target/
+            dist/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Install Trunk
@@ -33,6 +34,9 @@ jobs:
 
       - name: Add the WASM target
         run: rustup target add wasm32-unknown-unknown
+
+      - name: Install dependencies
+        run: sudo apt-get install g++ pkg-config libx11-dev libasound2-dev libudev-dev libxkbcommon-x11-0
 
       - name: Build
         run: trunk build
