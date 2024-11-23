@@ -39,7 +39,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y g++ pkg-config libx11-dev libasound2-dev libudev-dev libxkbcommon-x11-0
 
       - name: Build
-        run: trunk build
+        run: trunk build --public-url trolly-problem-simulator
 
       - name: Test
         run: cargo test --verbose -- --nocapture
